@@ -1,0 +1,103 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// yarn prisma migrate dev
+
+model User {
+  id       String @id @default(uuid())
+  email    String
+  password String
+
+  active Boolean @default(false)
+
+  products   Product[]
+  userLocale UserLocale[]
+  userData   UserData?
+  userFormat UserFormat?
+
+  createdAt DateTime? @default(now())
+  updatedAt DateTime? @default(now())
+
+  @@map("users")
+}
+
+model UserFormat {
+  id       String  @id @default(uuid())
+  delivery Boolean @default(false)
+  portion  String  @default("0")
+
+  user   User   @relation(fields: [userID], references: [id])
+  userID String @unique
+
+  @@map("userFormats")
+}
+
+model UserData {
+  id    String @id @default(uuid())
+  name  String @default("")
+  phone String @default("")
+  bio   String @default("")
+
+  user   User   @relation(fields: [userID], references: [id])
+  userID String @unique
+
+  @@map("userData")
+}
+
+model UserLocale {
+  id       String @id @default(uuid())
+  address  String @default("")
+  district String @default("")
+  city     String @default("Teresina")
+  state    String @default("Piaui")
+  latlng   String @default("0,0")
+
+  user     User    @relation(fields: [userID], references: [id])
+  userID   String  @unique
+
+  @@map("userLocale")
+}
+
+model Product {
+  id          String   @id @default(uuid())
+  name        String
+  description String
+  price       String
+  off         String
+  size        String[]
+  color       String[]
+  image       Json
+
+  user   User   @relation(fields: [userID], references: [id])
+  userID String
+
+  category   ProductCategory @relation(fields: [categoryID], references: [id])
+  categoryID String
+
+  @@map("products")
+}
+
+model ProductCategory {
+  id   String @id @default(uuid())
+  name String
+
+  product Product[]
+
+  @@map("categories")
+}
+
+model Region {
+  id   String @id @default(uuid())
+  name String
+
+  @@map("regions")
+}
