@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { UpdateUserService } from '../../services/user/UpdateUserService'
+import { UpdateUserService } from '../../services/user/UpdateUserDataService'
 
 class UpdateUserController {
     async handle(req: Request, res: Response) {
@@ -10,13 +10,17 @@ class UpdateUserController {
             bio,
         } = req.body
 
+        const {filename: avatar} = req.file
+        
+
         const updateUserService = new UpdateUserService();
 
         const userData = await updateUserService.execute({
             userID,
             name,
             phone,
-            bio
+            bio,
+            avatar
 
         })
 

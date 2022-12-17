@@ -4,18 +4,22 @@ import { hash } from 'bcryptjs'
 interface userRequest {
     email: string,
     password: string,
-    regionID:string
+    regionID: string
 }
 
 class CreateUserService {
     async execute({
         email,
         password,
+        regionID
 
     }: userRequest) {
 
         if (!email) {
             throw new Error("Email Incorreto");
+        }
+        if (!regionID) {
+            throw new Error("É necessrio selecionar região");
         }
 
         const emailExist = await prismaClient.user.findFirst({
@@ -34,11 +38,9 @@ class CreateUserService {
             data: {
                 email,
                 password: passwordCripto,
-            },
-            select: {
-                id: true,
-                email: true
+                regionID
             }
+            
         })
 
         await prismaClient.userData.create({
@@ -52,7 +54,7 @@ class CreateUserService {
                 userID: user.id
             }
         })
-        
+
         await prismaClient.userLocale.create({
             data: {
                 userID: user.id

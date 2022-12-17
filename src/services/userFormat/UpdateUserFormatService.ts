@@ -13,6 +13,18 @@ class ConfigUsuarioService {
         portion,
 
     }: userFormatRequest) {
+
+        const user = await prismaClient.user.findFirst({
+            where:{
+                id: userID
+            }
+        })
+
+        if (!user) {
+            throw new Error("Ops, infelizmente não encontramos!");
+            
+        }
+        
         
         const format = await prismaClient.userFormat.update({
             where:{

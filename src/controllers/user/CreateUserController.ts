@@ -13,7 +13,14 @@ class CreateUserController {
             regionID
         })
 
-        return res.json(user)
+        if(!user) {
+            throw new Error("Ops, algo deu errado!");
+            
+        }
+
+        return res.status(200).json({
+            message: "Cadastrado com Sucesso"
+        })
     }
 }
 

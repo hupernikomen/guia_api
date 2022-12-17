@@ -15,7 +15,10 @@ class ListByCategoryService {
             where: {
                 categoryID,
                 user: {
-                    active: true
+                    active: true,
+                    region:{
+                        name: "Dirceu" // Logica de alteração de REGIAO no FrontEnd
+                    }
                 }
             }
         })

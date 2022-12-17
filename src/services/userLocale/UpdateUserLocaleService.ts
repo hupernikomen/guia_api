@@ -21,6 +21,17 @@ class UpdateUserLocaleService {
 
     }: userLocaleRequest) {
 
+        const user = await prismaClient.user.findFirst({
+            where:{
+                id: userID
+            }
+        })
+
+        if (!user) {
+            throw new Error("Ops, infelizmente não encontramos!");
+            
+        }
+
 
         const region = await prismaClient.userLocale.update({
             where: {

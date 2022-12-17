@@ -1,16 +1,17 @@
 import prismaClient from "../../prisma";
 
-class ListProductsService {
-    async execute() {
+interface detailProductRequest{
+    productID:string
+}
 
-        const products = await prismaClient.product.findMany({
+class DetailProductService {
+    async execute({
+        productID
+    } : detailProductRequest) {
+
+        const product = await prismaClient.product.findUnique({
             where: {
-                user: {
-                    active: true,
-                    region:{
-                        name: "Dirceu" // Logica de alteração de REGIAO no FrontEnd
-                    }
-                }
+                id: productID
             },
             select:{
                 id: true,
@@ -25,7 +26,8 @@ class ListProductsService {
                     select: {
                         userData:{
                             select:{
-                                name:true
+                                name:true,
+                                phone: true
                             }
                         }
                     }
@@ -36,12 +38,11 @@ class ListProductsService {
                         name:true
                     }
                 }
-
             }
         })
 
-        return products
+        return product
     }
 }
 
-export { ListProductsService }
+export { DetailProductService }
