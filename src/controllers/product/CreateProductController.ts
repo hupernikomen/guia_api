@@ -16,17 +16,16 @@ class CreateProductController {
             categoryID,
         } = req.body
 
-        
 
         if (!req.files) {
-            throw new Error("Erro no envio de foto");
-            
+            throw new Error("Ops.. algo deu errado!");
+
         } else {
 
-             
+
             const image = req.files
 
-            const product = await createProductService.execute({
+            await createProductService.execute({
                 name,
                 description,
                 price,
@@ -37,7 +36,8 @@ class CreateProductController {
                 categoryID,
                 userID
             })
-            return res.status(200).json({mensagem: `Produto: ${product.name}, criado com Sucesso`})
+
+            return res.status(200).json({ mensagem: `Que legal! Seu produto já foi criado` })
         }
 
     }

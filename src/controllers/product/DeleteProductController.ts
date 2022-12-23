@@ -8,14 +8,12 @@ class DeleteProductController {
 
     const deleteProduct = new DeleteProductService()
 
-    const product = await deleteProduct.execute({
+    await deleteProduct.execute({
       productID
     })
 
     return res.status(200).json({
-      message: "Produto Excluido",
-      produto: product.name
-
+      message: "Fique tranquilo! Já excluimos seu produto"
     })
 
   }

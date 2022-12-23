@@ -7,36 +7,26 @@ class ListProductsService {
             where: {
                 user: {
                     active: true,
-                    region:{
+                    region: {
                         name: "Dirceu" // Logica de alteração de REGIAO no FrontEnd
                     }
                 }
             },
-            select:{
+            select: {
                 id: true,
-                name:true,
-                description: true,
-                price:true,
+                name: true,
+                price: true,
                 off: true,
-                size:true,
-                color:true,
                 image: true,
                 user: {
                     select: {
-                        userData:{
-                            select:{
-                                name:true
+                        userData: {
+                            select: {
+                                name: true
                             }
                         }
                     }
-                },
-                category:{
-                    select:{
-                        id: true,
-                        name:true
-                    }
                 }
-
             }
         })
 

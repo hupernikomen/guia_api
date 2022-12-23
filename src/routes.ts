@@ -6,9 +6,9 @@ import { CreateCategoryController } from './controllers/category/CreateCategoryC
 import { CreateProductController } from './controllers/product/CreateProductController';
 import { CreateRegionController } from './controllers/region/CreateRegionController';
 
-
 import { AuthUsuarioController } from './controllers/auth/AuthUserController'
 import { MeUserController } from './controllers/user/MeUserController';
+
 import { UpdateUserController } from './controllers/user/UpdateUserController';
 import { UpdateUserFormatController } from './controllers/userFormat/UpdateUserFormatController';
 import { UpdateUserLocaleController } from './controllers/userLocale/UpdateUserLocaleController';

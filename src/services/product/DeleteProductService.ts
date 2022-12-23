@@ -10,7 +10,7 @@ class DeleteProductService {
         productID
     }: DeleteProdutoRequest) {
 
-        const product = await prismaClient.product.findFirst({
+        const product = await prismaClient.product.findUnique({
             where: {
                 id: productID
             }

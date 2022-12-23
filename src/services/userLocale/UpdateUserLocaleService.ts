@@ -21,7 +21,7 @@ class UpdateUserLocaleService {
 
     }: userLocaleRequest) {
 
-        const user = await prismaClient.user.findFirst({
+        const user = await prismaClient.user.findUnique({
             where:{
                 id: userID
             }

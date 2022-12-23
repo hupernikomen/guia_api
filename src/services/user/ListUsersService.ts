@@ -12,25 +12,11 @@ class ListUsersService {
             },
             select: {
                 id: true,
-                email: true,
-                region: {
-                    select: {
-                        name:true
-                    }
-                },
                 userData: {
                     select: {
                         name: true,
                         bio: true,
 
-                    }
-                },
-                userLocale: {
-                    select:{
-                        address:true,
-                        city:true,
-                        district:true,
-                        state:true,
                     }
                 },
                 userFormat: {

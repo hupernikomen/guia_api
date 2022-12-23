@@ -14,7 +14,7 @@ class ConfigUsuarioService {
 
     }: userFormatRequest) {
 
-        const user = await prismaClient.user.findFirst({
+        const user = await prismaClient.user.findUnique({
             where:{
                 id: userID
             }
