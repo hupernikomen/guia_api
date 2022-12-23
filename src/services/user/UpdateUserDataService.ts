@@ -5,7 +5,7 @@ interface userDataRequest {
     name: string,
     phone: string,
     bio: string,
-    avatar: string,
+    // avatar: string,
 }
 
 class UpdateUserService {
@@ -14,7 +14,7 @@ class UpdateUserService {
         name,
         phone,
         bio,
-        avatar,
+        // avatar,
 
     }: userDataRequest) {
 
@@ -37,7 +37,7 @@ class UpdateUserService {
                 name,
                 phone,
                 bio,
-                avatar,
+                // avatar,
             }
         })
 

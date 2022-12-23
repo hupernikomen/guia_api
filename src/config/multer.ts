@@ -3,7 +3,7 @@ import multer from 'multer'
 
 import {extname, resolve} from 'path'
 
-// Essa função serve para dar destino onde eu quero salvar a foto [ enviando folder] e o nome do arquivo a ser salvo
+
 
 export default {
   upload(folder: string) {

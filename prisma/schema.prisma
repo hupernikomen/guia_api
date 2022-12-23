@@ -50,7 +50,7 @@ model UserData {
   name  String @default("")
   phone String @default("")
   bio   String @default("")
-  avatar String @default("")
+  // avatar String @default("")
 
   user   User   @relation(fields: [userID], references: [id])
   userID String @unique
@@ -77,10 +77,9 @@ model Product {
   name        String
   description String
   price       String
-  off         String
+  off         String @default("0")
   size        String[]
   color       String[]
-  image       Json
 
   user   User   @relation(fields: [userID], references: [id])
   userID String

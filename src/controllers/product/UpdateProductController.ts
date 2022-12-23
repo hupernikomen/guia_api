@@ -3,14 +3,15 @@ import { UpdateProductService } from '../../services/product/UpdateProductServic
 
 class UpdateProductController {
     async handle(req: Request, res: Response) {
-        const productID = req.query.productID as string
         const {
             name,
             description,
+            price,
             off,
             size,
             color,
-            categoryID
+            categoryID,
+            productID
         } = req.body
 
         const updateProductService = new UpdateProductService();
@@ -19,6 +20,7 @@ class UpdateProductController {
             productID,
             name,
             description,
+            price,
             off,
             size,
             color,

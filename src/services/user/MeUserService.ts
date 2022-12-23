@@ -21,7 +21,7 @@ class MeUserService {
                         name:true,
                         phone:true,
                         bio:true,
-                        
+                        // avatar:true
                     }
                 }
             }

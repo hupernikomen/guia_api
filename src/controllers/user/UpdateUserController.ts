@@ -10,8 +10,8 @@ class UpdateUserController {
             bio,
         } = req.body
 
-        const {filename: avatar} = req.file
-        
+        // const { filename: avatar } = req.file
+
 
         const updateUserService = new UpdateUserService();
 
@@ -20,7 +20,7 @@ class UpdateUserController {
             name,
             phone,
             bio,
-            avatar
+            // avatar
 
         })
 

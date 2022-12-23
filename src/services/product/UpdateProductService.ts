@@ -1,8 +1,9 @@
 import prismaClient from "../../prisma"
 
 interface productRequest {
-    name: string
-    description: string
+    name: string,
+    description: string,
+    price:string,
     off: string,
     size: string,
     color: string,
@@ -14,6 +15,7 @@ class UpdateProductService {
     async execute({
         name,
         description,
+        price,
         off,
         size,
         color,
@@ -29,6 +31,7 @@ class UpdateProductService {
             data: {
                 name,
                 description,
+                price,
                 off,
                 size,
                 color,
