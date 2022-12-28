@@ -7,6 +7,7 @@ interface ProductRequest {
   off: string;
   size: string;
   color: string;
+  files: object,
   categoryID: string;
   userID: string;
 }
@@ -19,23 +20,30 @@ class CreateProductService {
     off,
     size,
     color,
+    files,
     categoryID,
     userID,
   }: ProductRequest) {
-    const product = await prismaClient.product.create({
-      data: {
-        name,
-        description,
-        price,
-        off,
-        size,
-        color,
-        categoryID,
-        userID,
-      },
-    });
+    try {
+      
+      const product = await prismaClient.product.create({
+        data: {
+          name,
+          description,
+          price,
+          off,
+          size,
+          color,
+          files,
+          categoryID,
+          userID,
+        },
+      });
+      return product;
+    } catch (error) {
+      console.error('Erro no Service API',error)
+    }
 
-    return product;
   }
 }
 

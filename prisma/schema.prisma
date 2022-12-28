@@ -77,9 +77,10 @@ model Product {
   name        String
   description String
   price       String
-  off         String @default("0")
+  off         String @default("")
   size        String[]
   color       String[]
+  files      Json[]
 
   user   User   @relation(fields: [userID], references: [id])
   userID String

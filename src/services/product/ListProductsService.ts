@@ -5,7 +5,7 @@ class ListProductsService {
     const products = await prismaClient.product.findMany({
       where: {
         user: {
-          active: true,
+          active: false,
           region: {
             name: "Dirceu", // Logica de alteração de REGIAO no FrontEnd
           },

@@ -41,7 +41,7 @@ router.get('/users', new ListUsersController().handle)  //Front [com filtro de r
 router.get('/user', new ListUserController().handle)  //Front
 router.post('/login', new AuthUsuarioController().handle)  //Front
 
-router.post('/user', Authenticator, new CreateUserController().handle)
+router.post('/user', new CreateUserController().handle)
 router.put('/user', Authenticator, upload_avatar.single('avatar'), new UpdateUserController().handle)
 router.put('/format', Authenticator, new UpdateUserFormatController().handle)
 router.get('/me', Authenticator, new MeUserController().handle)
@@ -50,7 +50,7 @@ router.get('/me', Authenticator, new MeUserController().handle)
 // Categoria
 router.get('/categories', new ListCategoriesController().handle)  //Front
 
-router.post('/category', Authenticator, new CreateCategoryController().handle)
+router.post('/category', new CreateCategoryController().handle)
 
 
 // Produto
@@ -58,7 +58,7 @@ router.get('/products', new ListProductsController().handle)  //Front [com filtr
 router.get('/bycategory', new ListByCategoryController().handle)  //Front [com filtro de regiao]
 router.get('/detail', new DetailProductController().handle)
 
-router.post('/product', Authenticator, upload_products.array('img',5), new CreateProductController().handle)
+router.post('/product', Authenticator, upload_products.array('files',5), new CreateProductController().handle)
 router.delete('/product', Authenticator, new DeleteProductController().handle)
 router.put('/product', Authenticator, new UpdateProductController().handle)
 
@@ -66,7 +66,7 @@ router.put('/product', Authenticator, new UpdateProductController().handle)
 // Region
 router.get('/regions', new ListRegionsController().handle) //Front
 
-router.post('/region', Authenticator, new CreateRegionController().handle)
+router.post('/region', new CreateRegionController().handle)
 router.put('/locale', Authenticator, new UpdateUserLocaleController().handle)
 
 

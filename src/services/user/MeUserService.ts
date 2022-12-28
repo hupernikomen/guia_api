@@ -16,6 +16,11 @@ class MeUserService {
                         delivery: true
                     }
                 },
+                region:{
+                    select:{
+                        name:true
+                    }
+                },
                 userData:{
                     select: {
                         name:true,
