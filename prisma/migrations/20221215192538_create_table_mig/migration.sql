@@ -1,5 +1,0 @@
--- AlterTable
-ALTER TABLE "produtos" ALTER COLUMN "nome" SET DEFAULT '',
-ALTER COLUMN "descricao" SET DEFAULT '',
-ALTER COLUMN "preco" SET DEFAULT '',
-ALTER COLUMN "oferta" SET DEFAULT '';

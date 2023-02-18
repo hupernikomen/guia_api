@@ -10,6 +10,9 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+
+
+
 // yarn prisma migrate dev
 
 model User {

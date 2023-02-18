@@ -1,8 +1,0 @@
--- AlterTable
-ALTER TABLE "dados_usuario" ADD COLUMN     "estado" TEXT NOT NULL DEFAULT 'Piaui',
-ALTER COLUMN "nome" SET DEFAULT '',
-ALTER COLUMN "fone" SET DEFAULT '',
-ALTER COLUMN "bio" SET DEFAULT '',
-ALTER COLUMN "endereco" SET DEFAULT '',
-ALTER COLUMN "bairro" SET DEFAULT '',
-ALTER COLUMN "cidade" SET DEFAULT 'Teresina';
