@@ -1,29 +1,29 @@
 import { Router, Request, Response } from 'express';
 import multer from 'multer';
 
-import { CreateUserController } from './controllers/user/CreateUserController'
-import { CreateCategoryController } from './controllers/category/CreateCategoryController';
-import { CreateProductController } from './controllers/product/CreateProductController';
-import { CreateRegionController } from './controllers/region/CreateRegionController';
+import { CriarUsuarioController } from './controllers/usuario/CriarUsuarioController'
+import { CriarCategoriaController } from './controllers/categoria/CriarCategoriasController';
+import { CriarProdutoController } from './controllers/produto/CriarProdutoController';
+import { CriarRegiaoController } from './controllers/regiao/CriarRegiaoController';
 
 import { AuthUsuarioController } from './controllers/auth/AuthUserController'
-import { MeUserController } from './controllers/user/MeUserController';
+import { MeUsuarioController } from './controllers/usuario/MeUserController';
 
-import { UpdateUserController } from './controllers/user/UpdateUserController';
-import { UpdateUserFormatController } from './controllers/userFormat/UpdateUserFormatController';
-import { UpdateUserLocaleController } from './controllers/userLocale/UpdateUserLocaleController';
-import { UpdateProductController } from './controllers/product/UpdateProductController';
+import { AtualizarUsuarioController } from './controllers/usuario/AtualizarUsuarioController';
+import { AtualizarFormatoController } from './controllers/formato/AtualizarFormatoController';
+import { AtualizarLocalizacaoController } from './controllers/localizacao/UpdateUserLocaleController';
+import { AtualizarProdutoController } from './controllers/produto/AtualizarProdutoController';
 
-import { ListCategoriesController } from './controllers/category/ListCategoriesController';
-import { ListUsersController } from './controllers/user/ListUsersController';
-import { ListProductsController } from './controllers/product/ListProductsController';
-import { ListByCategoryController } from './controllers/product/ListByCategoryController';
-import { ListRegionsController } from './controllers/region/ListRegionController';
-import { ListUserController } from './controllers/user/ListUserController';
+import { ListarCategoriasController } from './controllers/categoria/ListarCategoriasController';
+import { ListarUsuariosController } from './controllers/usuario/ListarUsuariosController';
+import { ListarProdutosController } from './controllers/produto/ListarProdutosController';
+import { ListarPorCategoriaController } from './controllers/produto/ListarPorCategoriaController';
+import { ListarRegioesController } from './controllers/regiao/ListarRegioesController';
+import { ListarUsuarioControler } from './controllers/usuario/ListarUsuarioController';
 
-import { DetailProductController } from './controllers/product/DetailProductController';
+import { DetalheProdutoController } from './controllers/produto/DetalheProdutoController';
 
-import { DeleteProductController } from './controllers/product/DeleteProductController';
+import { DeletarProdutoController } from './controllers/produto/DeleteProductController';
 
 import { Authenticator } from './middlewares/authenticator';
 
@@ -31,43 +31,42 @@ import uploadConfig from './config/multer'
 
 const router = Router();
 
-const upload_products = multer(uploadConfig.upload('./tmp/products'))
-const upload_categories = multer(uploadConfig.upload('./tmp/categorias'))
-const upload_avatar = multer(uploadConfig.upload('./tmp/logo'))
+const upload_produtos = multer(uploadConfig.upload('./tmp/produtosImg'))
+const upload_logo = multer(uploadConfig.upload('./tmp/logo'))
 
 
 // Usuario
-router.get('/users', new ListUsersController().handle)  //Front [com filtro de regiao]
-router.get('/user', new ListUserController().handle)  //Front
+router.get('/usuarios', new ListarUsuariosController().handle)  //Front [com filtro de regiao]
+router.get('/usuario', new ListarUsuarioControler().handle)  //Front
 router.post('/login', new AuthUsuarioController().handle)  //Front
 
-router.post('/user', new CreateUserController().handle)
-router.put('/user', Authenticator, upload_avatar.single('avatar'), new UpdateUserController().handle)
-router.put('/format', Authenticator, new UpdateUserFormatController().handle)
-router.get('/me', Authenticator, new MeUserController().handle)
+router.post('/usuario', new CriarUsuarioController().handle)
+router.put('/usuario', Authenticator, upload_logo.single('logo'), new AtualizarUsuarioController().handle)
+router.put('/formato', Authenticator, new AtualizarFormatoController().handle)
+router.get('/me', Authenticator, new MeUsuarioController().handle)
 
 
 // Categoria
-router.get('/categories', new ListCategoriesController().handle)  //Front
+router.get('/categorias', new ListarCategoriasController().handle)  //Front
 
-router.post('/category', new CreateCategoryController().handle)
+router.post('/categoria', new CriarCategoriaController().handle)
 
 
 // Produto
-router.get('/products', new ListProductsController().handle)  //Front [com filtro de regiao]
-router.get('/bycategory', new ListByCategoryController().handle)  //Front [com filtro de regiao]
-router.get('/detail', new DetailProductController().handle)
+router.get('/produtos', new ListarProdutosController().handle)  //Front [com filtro de regiao]
+router.get('/porcategoria', new ListarPorCategoriaController().handle)  //Front [com filtro de regiao]
+router.get('/detalhe', new DetalheProdutoController().handle)
 
-router.post('/product', Authenticator, upload_products.array('files',5), new CreateProductController().handle)
-router.delete('/product', Authenticator, new DeleteProductController().handle)
-router.put('/product', Authenticator, new UpdateProductController().handle)
+router.post('/produto', Authenticator, upload_produtos.array('files',5), new CriarProdutoController().handle)
+router.delete('/produto', Authenticator, new DeletarProdutoController().handle)
+router.put('/produto', Authenticator, new AtualizarProdutoController().handle)
 
 
 // Region
-router.get('/regions', new ListRegionsController().handle) //Front
+router.get('/regioes', new ListarRegioesController().handle) //Front
 
-router.post('/region', new CreateRegionController().handle)
-router.put('/locale', Authenticator, new UpdateUserLocaleController().handle)
+router.post('/regiao', new CriarRegiaoController().handle)
+router.put('/localizacao', Authenticator, new AtualizarLocalizacaoController().handle)
 
 
 export { router };

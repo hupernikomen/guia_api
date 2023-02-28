@@ -10,106 +10,100 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
-
-
 // yarn prisma migrate dev
 
-model User {
-  id       String @id @default(uuid())
-  email    String
-  password String
+model Usuario {
+  id    String @id @default(uuid())
+  email String
+  senha String
 
-  active Boolean @default(false)
+  ativo Boolean @default(false)
 
-  products   Product[]
-  userLocale UserLocale[]
-  userData   UserData?
-  userFormat UserFormat?
+  produtos    Produto[]
+  localizacao Localizacao[]
+  dados       Dados?
+  formato     Formato?
 
-
-  region   Region   @relation(fields: [regionID], references: [id])
-  regionID String
+  regiao   Regioes @relation(fields: [regiaoID], references: [id])
+  regiaoID String
 
   createdAt DateTime? @default(now())
   updatedAt DateTime? @default(now())
 
-  @@map("users")
+  @@map("usuarios")
 }
 
-model UserFormat {
-  id       String  @id @default(uuid())
-  delivery Boolean @default(false)
-  portion  String  @default("0")
+model Formato {
+  id      String  @id @default(uuid())
+  entrega Boolean @default(false)
+  parcela String  @default("0")
 
-  user   User   @relation(fields: [userID], references: [id])
-  userID String @unique
+  usuario   Usuario @relation(fields: [usuarioID], references: [id])
+  usuarioID String  @unique
 
-  @@map("userFormats")
+  @@map("formatos")
 }
 
-model UserData {
-  id    String @id @default(uuid())
-  name  String @default("")
-  phone String @default("")
-  bio   String @default("")
+model Dados {
+  id       String @id @default(uuid())
+  nome     String @default("")
+  telefone String @default("")
+  bio      String @default("")
   // avatar String @default("")
 
-  user   User   @relation(fields: [userID], references: [id])
-  userID String @unique
+  usuario   Usuario @relation(fields: [usuarioID], references: [id])
+  usuarioID String  @unique
 
-  @@map("userData")
+  @@map("dados")
 }
 
-model UserLocale {
+model Localizacao {
   id       String @id @default(uuid())
-  address  String @default("")
-  district String @default("")
-  city     String @default("Teresina")
-  state    String @default("Piaui")
+  endereco String @default("")
+  bairro   String @default("")
+  cidade   String @default("Teresina")
+  estado   String @default("Piaui")
   latlng   String @default("0,0")
 
-  user     User    @relation(fields: [userID], references: [id])
-  userID   String  @unique
+  usuario   Usuario @relation(fields: [usuarioID], references: [id])
+  usuarioID String  @unique
 
-  @@map("userLocale")
+  @@map("localizacoes")
 }
 
-model Product {
-  id          String   @id @default(uuid())
-  name        String
-  description String
-  price       String
-  off         String @default("")
-  size        String[]
-  color       String[]
-  files      Json[]
+model Produto {
+  id        String   @id @default(uuid())
+  nome      String
+  descricao String
+  preco     String
+  oferta    String   @default("")
+  tamanho   String[]
+  cor       String[]
+  files     Json[]
 
-  user   User   @relation(fields: [userID], references: [id])
-  userID String
+  usuario   Usuario @relation(fields: [usuarioID], references: [id])
+  usuarioID String
 
-  category   ProductCategory @relation(fields: [categoryID], references: [id])
-  categoryID String
+  categoria   Categoria @relation(fields: [categoriaID], references: [id])
+  categoriaID String
 
-  @@map("products")
+  @@map("produtos")
 }
 
-model ProductCategory {
+model Categoria {
   id   String @id @default(uuid())
-  name String
+  nome String
 
-  product Product[]
+  produto Produto[]
 
-  @@map("categories")
+  @@map("categorias")
 }
 
-model Region {
+model Regioes {
   id   String @id @default(uuid())
-  name String
+  nome String
 
-  user User[]
-  
+  usuario Usuario[]
 
-  @@map("regions")
+  @@map("regioes")
 }
-

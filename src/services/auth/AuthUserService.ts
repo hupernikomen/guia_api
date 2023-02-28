@@ -4,28 +4,28 @@ import { sign } from 'jsonwebtoken'
 
 interface AuthRequest {
     email: string,
-    password: string
+    senha: string
 }
 
 class AuthUsuarioService {
     async execute({
         email,
-        password
+        senha
     }: AuthRequest) {
 
-        const user = await prismaClient.user.findFirst({
+        const usuario = await prismaClient.usuario.findFirst({
             where: {
                 email:email
             }
             
         })
 
-        if (!user) {
+        if (!usuario) {
             throw new Error("Usuario ou Senha Incorreta");
             
         }
 
-        const comparePassword = await compare(password, user.password)
+        const comparePassword = await compare(senha, usuario.senha)
         if (!comparePassword) {
             throw new Error("Usuario ou Senha Incorreta");
 
@@ -33,15 +33,15 @@ class AuthUsuarioService {
         
 
         const token = sign(
-            { email: user.email },
+            { email: usuario.email },
             process.env.JWT_SECRET,
-            { subject: user.id }
+            { subject: usuario.id }
         )
 
 
         return {
-            id: user.id,
-            email: user.email,
+            id: usuario.id,
+            email: usuario.email,
             token: token
         }
 
