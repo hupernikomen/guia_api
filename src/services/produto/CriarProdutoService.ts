@@ -7,7 +7,7 @@ interface ProductRequest {
   oferta: string;
   tamanho: string;
   cor: string;
-  files: object,
+  imagens: object,
   categoriaID: string;
   usuarioID: string;
 }
@@ -20,7 +20,7 @@ class CriarProdutoService {
     oferta,
     tamanho,
     cor,
-    files,
+    imagens,
     categoriaID,
     usuarioID,
   }: ProductRequest) {
@@ -34,12 +34,13 @@ class CriarProdutoService {
           oferta,
           tamanho,
           cor,
-          files,
+          imagens,
           categoriaID,
           usuarioID,
         },
       });
       return produto;
+
     } catch (error) {
       console.error('Erro no Service API', error)
     }

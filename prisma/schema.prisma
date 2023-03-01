@@ -79,7 +79,7 @@ model Produto {
   oferta    String   @default("")
   tamanho   String[]
   cor       String[]
-  files     Json[]
+  imagens     Json[]
 
   usuario   Usuario @relation(fields: [usuarioID], references: [id])
   usuarioID String

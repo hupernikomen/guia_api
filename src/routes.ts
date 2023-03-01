@@ -7,7 +7,7 @@ import { CriarProdutoController } from './controllers/produto/CriarProdutoContro
 import { CriarRegiaoController } from './controllers/regiao/CriarRegiaoController';
 
 import { AuthUsuarioController } from './controllers/auth/AuthUserController'
-import { MeUsuarioController } from './controllers/usuario/MeUserController';
+import { MeUsuarioController } from './controllers/usuario/MeUsuarioController';
 
 import { AtualizarUsuarioController } from './controllers/usuario/AtualizarUsuarioController';
 import { AtualizarFormatoController } from './controllers/formato/AtualizarFormatoController';
@@ -31,7 +31,7 @@ import uploadConfig from './config/multer'
 
 const router = Router();
 
-const upload_produtos = multer(uploadConfig.upload('./tmp/produtosImg'))
+const upload_produtos = multer(uploadConfig.upload('./tmp/produtos'))
 const upload_logo = multer(uploadConfig.upload('./tmp/logo'))
 
 
