@@ -10,8 +10,8 @@ import { AuthUsuarioController } from './controllers/auth/AuthUserController'
 import { MeUsuarioController } from './controllers/usuario/MeUsuarioController';
 
 import { AtualizarUsuarioController } from './controllers/usuario/AtualizarUsuarioController';
-import { AtualizarFormatoController } from './controllers/formato/AtualizarFormatoController';
-import { AtualizarLocalizacaoController } from './controllers/localizacao/UpdateUserLocaleController';
+// import { AtualizarFormatoController } from './controllers/formato/AtualizarFormatoController';
+// import { AtualizarLocalizacaoController } from './controllers/localizacao/UpdateUserLocaleController';
 import { AtualizarProdutoController } from './controllers/produto/AtualizarProdutoController';
 
 import { ListarCategoriasController } from './controllers/categoria/ListarCategoriasController';
@@ -42,7 +42,7 @@ router.post('/login', new AuthUsuarioController().handle)  //Front
 
 router.post('/usuario', new CriarUsuarioController().handle)
 router.put('/usuario', Authenticator, upload_logo.single('logo'), new AtualizarUsuarioController().handle)
-router.put('/formato', Authenticator, new AtualizarFormatoController().handle)
+// router.put('/formato', Authenticator, new AtualizarFormatoController().handle)
 router.get('/me', Authenticator, new MeUsuarioController().handle)
 
 
@@ -66,7 +66,7 @@ router.put('/produto', Authenticator, new AtualizarProdutoController().handle)
 router.get('/regioes', new ListarRegioesController().handle) //Front
 
 router.post('/regiao', new CriarRegiaoController().handle)
-router.put('/localizacao', Authenticator, new AtualizarLocalizacaoController().handle)
+// router.put('/localizacao', Authenticator, new AtualizarLocalizacaoController().handle)
 
 
 export { router };

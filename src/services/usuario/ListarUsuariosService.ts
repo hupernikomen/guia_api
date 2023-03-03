@@ -12,18 +12,7 @@ class ListarUsuariosService {
             },
             select: {
                 id: true,
-                dados: {
-                    select: {
-                        nome: true,
-                        bio: true,
 
-                    }
-                },
-                formato: {
-                    select: {
-                        entrega: true,
-                    }
-                }
             }
         })
 

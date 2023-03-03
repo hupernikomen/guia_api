@@ -3,7 +3,8 @@ import { UpdateProductService } from '../../services/produto/AtualizarProdutoSer
 
 class AtualizarProdutoController {
     async handle(req: Request, res: Response) {
-        const produtoID = req.query.productID as string
+        const produtoID = req.query.produtoID as string
+        
         const {
             nome,
             descricao,

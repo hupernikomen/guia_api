@@ -2,18 +2,30 @@ import prismaClient from "../../prisma"
 
 interface userDataRequest {
     usuarioID: string,
+    ativo: boolean,
     nome: string,
     telefone: string,
     bio: string,
+    endereco: string,
+    bairro: string,
+    cidade: string,
+    latlng: string,
+    entrega: boolean
     // avatar: string,
 }
 
 class AtualizarUsuarioService {
     async execute({
         usuarioID,
+        ativo,
         nome,
         telefone,
         bio,
+        endereco,
+        bairro,
+        cidade,
+        latlng,
+        entrega
         // avatar,
 
     }: userDataRequest) {
@@ -29,14 +41,20 @@ class AtualizarUsuarioService {
 
         }
 
-        const data = await prismaClient.dados.update({
+        const data = await prismaClient.usuario.update({
             where: {
-                usuarioID
+                id: usuarioID
             },
             data: {
+                ativo,
                 nome,
                 telefone,
                 bio,
+                endereco,
+                bairro,
+                cidade,
+                latlng,
+                entrega
                 // avatar,
             }
         })

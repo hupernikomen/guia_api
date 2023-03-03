@@ -17,15 +17,22 @@ model Usuario {
   email String
   senha String
 
-  ativo Boolean @default(false)
+  ativo    Boolean @default(false)
+  nome     String?
+  telefone String?
+  bio      String?
 
-  produtos    Produto[]
-  localizacao Localizacao[]
-  dados       Dados?
-  formato     Formato?
+  endereco String?
+  bairro   String?
+  cidade   String?
+  latlng   String?
 
-  regiao   Regioes @relation(fields: [regiaoID], references: [id])
-  regiaoID String
+  entrega Boolean @default(false)
+
+  produtos Produto[]
+
+  regiao   Regiao? @relation(fields: [regiaoID], references: [id])
+  regiaoID String?
 
   createdAt DateTime? @default(now())
   updatedAt DateTime? @default(now())
@@ -33,43 +40,6 @@ model Usuario {
   @@map("usuarios")
 }
 
-model Formato {
-  id      String  @id @default(uuid())
-  entrega Boolean @default(false)
-  parcela String  @default("0")
-
-  usuario   Usuario @relation(fields: [usuarioID], references: [id])
-  usuarioID String  @unique
-
-  @@map("formatos")
-}
-
-model Dados {
-  id       String @id @default(uuid())
-  nome     String @default("")
-  telefone String @default("")
-  bio      String @default("")
-  // avatar String @default("")
-
-  usuario   Usuario @relation(fields: [usuarioID], references: [id])
-  usuarioID String  @unique
-
-  @@map("dados")
-}
-
-model Localizacao {
-  id       String @id @default(uuid())
-  endereco String @default("")
-  bairro   String @default("")
-  cidade   String @default("Teresina")
-  estado   String @default("Piaui")
-  latlng   String @default("0,0")
-
-  usuario   Usuario @relation(fields: [usuarioID], references: [id])
-  usuarioID String  @unique
-
-  @@map("localizacoes")
-}
 
 model Produto {
   id        String   @id @default(uuid())
@@ -99,7 +69,7 @@ model Categoria {
   @@map("categorias")
 }
 
-model Regioes {
+model Regiao {
   id   String @id @default(uuid())
   nome String
 

@@ -9,7 +9,7 @@ class CreateRegionService {
         nome
     }: regionRequest) {
 
-        const regiaoExiste = await prismaClient.regioes.findFirst({
+        const regiaoExiste = await prismaClient.regiao.findFirst({
             where: {
                 nome
             }
@@ -20,7 +20,7 @@ class CreateRegionService {
             
         }
 
-        const regiao = await prismaClient.regioes.create({
+        const regiao = await prismaClient.regiao.create({
             data: {
                 nome
             }

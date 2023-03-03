@@ -20,6 +20,8 @@ class CriarProdutoController {
       throw new Error("Ops.. algo deu errado!");
     } else {
       const files = req.files;
+      
+
 
       const produto = await criarProdutoService.execute({
         nome,

@@ -18,17 +18,9 @@ class DetalheProdutoService {
         oferta: true,
         tamanho: true,
         cor: true,
-        // image: true,
-        usuario: {
-          select: {
-            dados: {
-              select: {
-                nome: true,
-                telefone: true,
-              },
-            },
-          },
-        },
+        imagens: true,
+        usuario: true,
+        
         categoria: {
           select: {
             id: true,

@@ -18,9 +18,6 @@ class ListarUsuarioService {
                 email: true,
                 produtos: true,
                 regiao: true,
-                dados: true,
-                localizacao: true,
-                formato: true
             }
         })
 

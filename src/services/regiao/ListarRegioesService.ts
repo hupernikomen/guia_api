@@ -3,7 +3,7 @@ import prismaClient from "../../prisma";
 class ListarRegioesService {
     async execute() {
 
-        const regiao = await prismaClient.regioes.findMany({
+        const regiao = await prismaClient.regiao.findMany({
             select:{
                 id: true,
                 nome: true
