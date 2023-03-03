@@ -16,13 +16,10 @@ class CriarProdutoController {
       usuarioID } =
       req.body;
 
-      console.log(req.files, "req.files")
     if (!req.files) {
       throw new Error("Ops.. algo deu errado!");
     } else {
       const files = req.files;
-      
-
 
       const produto = await criarProdutoService.execute({
         nome,

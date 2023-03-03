@@ -1,54 +1,3 @@
-/*
-  Warnings:
-
-  - You are about to drop the `categories` table. If the table is not empty, all the data it contains will be lost.
-  - You are about to drop the `products` table. If the table is not empty, all the data it contains will be lost.
-  - You are about to drop the `regions` table. If the table is not empty, all the data it contains will be lost.
-  - You are about to drop the `userData` table. If the table is not empty, all the data it contains will be lost.
-  - You are about to drop the `userFormats` table. If the table is not empty, all the data it contains will be lost.
-  - You are about to drop the `userLocale` table. If the table is not empty, all the data it contains will be lost.
-  - You are about to drop the `users` table. If the table is not empty, all the data it contains will be lost.
-
-*/
--- DropForeignKey
-ALTER TABLE "products" DROP CONSTRAINT "products_categoryID_fkey";
-
--- DropForeignKey
-ALTER TABLE "products" DROP CONSTRAINT "products_userID_fkey";
-
--- DropForeignKey
-ALTER TABLE "userData" DROP CONSTRAINT "userData_userID_fkey";
-
--- DropForeignKey
-ALTER TABLE "userFormats" DROP CONSTRAINT "userFormats_userID_fkey";
-
--- DropForeignKey
-ALTER TABLE "userLocale" DROP CONSTRAINT "userLocale_userID_fkey";
-
--- DropForeignKey
-ALTER TABLE "users" DROP CONSTRAINT "users_regionID_fkey";
-
--- DropTable
-DROP TABLE "categories";
-
--- DropTable
-DROP TABLE "products";
-
--- DropTable
-DROP TABLE "regions";
-
--- DropTable
-DROP TABLE "userData";
-
--- DropTable
-DROP TABLE "userFormats";
-
--- DropTable
-DROP TABLE "userLocale";
-
--- DropTable
-DROP TABLE "users";
-
 -- CreateTable
 CREATE TABLE "usuarios" (
     "id" TEXT NOT NULL,
@@ -105,7 +54,7 @@ CREATE TABLE "produtos" (
     "oferta" TEXT NOT NULL DEFAULT '',
     "tamanho" TEXT[],
     "cor" TEXT[],
-    "files" JSONB[],
+    "imagens" JSONB[],
     "usuarioID" TEXT NOT NULL,
     "categoriaID" TEXT NOT NULL,
 
