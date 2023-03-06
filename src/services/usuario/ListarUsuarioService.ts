@@ -16,6 +16,8 @@ class ListarUsuarioService {
             select: {
                 id: true,
                 email: true,
+                nome:true,
+                telefone: true,
                 produtos: true,
                 regiao: true,
             }

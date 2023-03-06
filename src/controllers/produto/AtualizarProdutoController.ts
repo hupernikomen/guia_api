@@ -28,6 +28,7 @@ class AtualizarProdutoController {
             produtoID
         })
 
+        
 
         return res.json(produto)
     }

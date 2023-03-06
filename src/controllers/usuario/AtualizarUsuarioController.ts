@@ -3,7 +3,7 @@ import { AtualizarUsuarioService } from '../../services/usuario/AtualizarUsuario
 
 class AtualizarUsuarioController {
     async handle(req: Request, res: Response) {
-        const usuarioID = req.query.userID as string
+        const usuarioID = req.query.usuarioID as string
         const {
             ativo,
             nome,
