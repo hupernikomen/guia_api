@@ -9,10 +9,12 @@ class MeUsuarioService {
             select: {
                 id: true,
                 nome: true,
+                bio: true,
                 email: true,
                 ativo: true,
                 produtos: true,
                 telefone: true,
+                logo: true,
 
                 regiao:{
                     select:{

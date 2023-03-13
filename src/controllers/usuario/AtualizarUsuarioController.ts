@@ -16,11 +16,16 @@ class AtualizarUsuarioController {
             entrega
         } = req.body
 
+        const file = req.file
+
+        const boo = entrega === 'true'
+
         const atualizarUsuarioService = new AtualizarUsuarioService();
 
         const data = await atualizarUsuarioService.execute({
             usuarioID,
             ativo,
+            logo: file,
             nome,
             telefone,
             bio,
@@ -28,8 +33,7 @@ class AtualizarUsuarioController {
             bairro,
             cidade,
             latlng,
-            entrega
-            // avatar
+            entrega: boo
 
         })
 

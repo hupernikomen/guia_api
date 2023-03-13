@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "produtos" ALTER COLUMN "tamanho" DROP NOT NULL,
+ALTER COLUMN "tamanho" SET DATA TYPE TEXT;

@@ -16,10 +16,16 @@ class ListarUsuarioService {
             select: {
                 id: true,
                 email: true,
+                bio: true,
+                latlng:true,
                 nome:true,
+                endereco:true,
+                bairro: true,
+                logo: true,
                 telefone: true,
                 produtos: true,
                 regiao: true,
+                entrega:true
             }
         })
 

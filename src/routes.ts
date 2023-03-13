@@ -39,7 +39,7 @@ router.get('/usuario', new ListarUsuarioControler().handle)  //Front
 router.post('/login', new AuthUsuarioController().handle)  //Front
 
 router.post('/usuario', new CriarUsuarioController().handle)
-router.put('/usuario', Authenticator, new AtualizarUsuarioController().handle)
+router.put('/usuario', Authenticator, upload_logo.single('logo'), new AtualizarUsuarioController().handle)
 router.get('/me', Authenticator, new MeUsuarioController().handle)
 
 

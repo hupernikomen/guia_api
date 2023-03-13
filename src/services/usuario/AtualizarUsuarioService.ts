@@ -3,21 +3,22 @@ import prismaClient from "../../prisma"
 interface userDataRequest {
     usuarioID: string,
     ativo: boolean,
+    logo: object,
     nome: string,
     telefone: string,
     bio: string,
     endereco: string,
     bairro: string,
     cidade: string,
-    latlng: string,
+    latlng: object,
     entrega: boolean
-    // avatar: string,
 }
 
 class AtualizarUsuarioService {
     async execute({
         usuarioID,
         ativo,
+        logo,
         nome,
         telefone,
         bio,
@@ -26,7 +27,6 @@ class AtualizarUsuarioService {
         cidade,
         latlng,
         entrega
-        // avatar,
 
     }: userDataRequest) {
 
@@ -48,6 +48,7 @@ class AtualizarUsuarioService {
             data: {
                 ativo,
                 nome,
+                logo,
                 telefone,
                 bio,
                 endereco,
@@ -55,7 +56,6 @@ class AtualizarUsuarioService {
                 cidade,
                 latlng,
                 entrega
-                // avatar,
             }
         })
 

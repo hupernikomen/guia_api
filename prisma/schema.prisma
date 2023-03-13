@@ -17,6 +17,8 @@ model Usuario {
   email String
   senha String
 
+  logo Json[]
+
   ativo    Boolean @default(false)
   nome     String?
   telefone String?
@@ -25,7 +27,7 @@ model Usuario {
   endereco String?
   bairro   String?
   cidade   String?
-  latlng   String?
+  latlng   Json?
 
   entrega Boolean @default(false)
 
@@ -40,16 +42,15 @@ model Usuario {
   @@map("usuarios")
 }
 
-
 model Produto {
   id        String   @id @default(uuid())
   nome      String
   descricao String
   preco     String
   oferta    String   @default("")
-  tamanho   String[]
+  tamanho   String?
   cor       String[]
-  imagens     Json[]
+  imagens   Json[]
 
   usuario   Usuario @relation(fields: [usuarioID], references: [id])
   usuarioID String

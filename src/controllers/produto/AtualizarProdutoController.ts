@@ -15,6 +15,9 @@ class AtualizarProdutoController {
             categoriaID,
         } = req.body
 
+        console.log(tamanho,'tamanho');
+        
+
         const updateProductService = new UpdateProductService();
 
         const produto = await updateProductService.execute({
